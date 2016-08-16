@@ -937,6 +937,7 @@ def fit_wifes_interslit_bias(inimg,
                     (curr_mask))[0]
                 pylab.figure()
                 pylab.hist(curr_col[good_inds], bins=50)
+                print 'Showing plot...'
                 pylab.show()
                 row_med[i] = numpy.mean(curr_col[good_inds])
             #row_med = numpy.median(curr_data, axis=0)
@@ -986,6 +987,7 @@ def fit_wifes_interslit_bias(inimg,
                 fval_med = numpy.median(bias_fvals)
                 sp.set_zlim([fval_med-5.0*resids_rms,
                              fval_med+5.0*resids_rms])
+                print 'Showing plot...'
                 pylab.show()
         elif method == 'median':
             bias_val = numpy.median(curr_data[numpy.nonzero(curr_map)])
@@ -1235,6 +1237,7 @@ def generate_wifes_bias_fit(bias_img, outimg, data_hdu=0,
             matplotlib.pyplot.ylim([-10,10])
             matplotlib.pyplot.title('Fitting bias frame %s' % 
                                     bias_img.split('/')[-1])
+            print 'Showing plot...'
             matplotlib.pyplot.show()
     
         # ----------------------------------------------------
@@ -1320,6 +1323,7 @@ def derive_slitlet_profiles(flatfield_fn,
             pylab.plot(y_prof, color='b')
             pylab.axvline(orig_ctr, color='r')
             pylab.axvline(new_ctr, color='g')
+            print 'Showing plot...'
             pylab.show()
         # now adjust the slitlet definitions!
         y_shift = bin_y*int(new_ctr-orig_ctr)
@@ -1538,6 +1542,7 @@ def interslice_cleanup(input_fn, output_fn,
             save_fn = save_prefix+'flat_sub_data.png'
             pylab.savefig(save_fn)
         if plot:
+            print 'Showing plot...'
             pylab.show()
     return
 
@@ -2233,6 +2238,7 @@ def wifes_2dim_response(spec_inimg,
     #import pylab
     #pylab.figure()
     #pylab.plot(mid_lam_array, spec_norm)
+    #print 'Showing plot...'
     #pylab.show()
     spat_interp = scipy.interpolate.interp1d(
         mid_lam_array, spatial_flat_spec/spec_norm,
@@ -2305,6 +2311,7 @@ def wifes_2dim_response(spec_inimg,
                 #    alt_flat_spec))
                 #sp1.plot(norm_func[500:-200])
                 #sp2.plot(next_normed_data[q,:])
+            #print 'Showing plot...'
             #pylab.show()
             #spat_ratio = curr_interp_spat.T / spatial_flat_spec
             spat_ratio = alt_interp_spat
@@ -2356,6 +2363,7 @@ def wifes_2dim_response(spec_inimg,
             pylab.savefig(save_fn)
         #------------------
         if plot:
+            print 'Showing plot...'
             pylab.show()
     #---------------------------------------------
     return
@@ -2575,6 +2583,7 @@ def derive_wifes_wire_solution(inimg, out_file,
         #pylab.figure()
         #pylab.plot(fit_x_arr, fit_y_arr, 'b')
         #pylab.plot(ccd_x, trend_y, 'r')
+        #print 'Showing plot...'
         #pylab.show()
         ctr_results[q,:] = trend_y
     f.close()
